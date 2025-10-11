@@ -20,3 +20,23 @@
 - Tree Shaking - remove unused code
 - Transpilation
 - Different build for dev and prod bundles
+
+/\*\*
+
+- Header
+- - Logo
+- - Nav items
+- Body
+- - Search
+- - RestaurantContainer
+- - RestaurantCard
+-      - Img
+-      - Name of res, Star rating, cuisine, delivery time
+- Footer
+- - CopyRight
+- - Links
+- - Address
+- - Contact
+    \*/
+
+// React.createElement => Object => HTMLElement(render)
