@@ -727,948 +727,54 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-/**
- * Header
- *  - Logo
- *  - Nav items
- * Body
- *  - Search
- *  - RestaurantContainer
- *    - RestaurantCard
- *      - Img
- *      - Name of res, Star rating, cuisine, delivery time
- * Footer
- *  - CopyRight
- *  - Links
- *  - Address
- *  - Contact
- */ // React.createElement => Object => HTMLElement(render)
-const Header = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "header",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "logo-container",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    className: "logo",
-                    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzTo7Sb8iYLjFeTf-I8Rnz7qnVpPzr6EvSUQ&s"
-                }, void 0, false, {
-                    fileName: "src/App.js",
-                    lineNumber: 26,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 25,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "nav-items",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: "Home"
-                        }, void 0, false, {
-                            fileName: "src/App.js",
-                            lineNumber: 33,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: "About Us"
-                        }, void 0, false, {
-                            fileName: "src/App.js",
-                            lineNumber: 34,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: "Contact Us"
-                        }, void 0, false, {
-                            fileName: "src/App.js",
-                            lineNumber: 35,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                            className: "cart-logo",
-                            src: "https://cdn-icons-png.flaticon.com/512/1413/1413908.png"
-                        }, void 0, false, {
-                            fileName: "src/App.js",
-                            lineNumber: 37,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/App.js",
-                    lineNumber: 32,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 31,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/App.js",
-        lineNumber: 24,
-        columnNumber: 5
-    }, undefined);
-};
-_c = Header;
-const RestaurantCard = (props)=>{
-    const { resData } = props;
-    const { img_url, name, cuisine, rating, delivery_time } = resData;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "res-card",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                className: "res-img",
-                src: img_url,
-                alt: "res-img"
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 54,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: name
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 55,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                children: cuisine
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 56,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                children: [
-                    rating,
-                    " stars"
-                ]
-            }, void 0, true, {
-                fileName: "src/App.js",
-                lineNumber: 57,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                children: [
-                    delivery_time,
-                    " mins"
-                ]
-            }, void 0, true, {
-                fileName: "src/App.js",
-                lineNumber: 58,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/App.js",
-        lineNumber: 53,
-        columnNumber: 5
-    }, undefined);
-};
-_c1 = RestaurantCard;
-const resList = [
-    {
-        id: 1,
-        name: 'Golden Gate Grill',
-        address: {
-            street: '123 Market St',
-            city: 'San Francisco',
-            state: 'CA',
-            zip: '94103'
-        },
-        img_url: 'https://images.squarespace-cdn.com/content/v1/5de7e88257d35f456747fad5/1595789963589-INVC84RWZVSDYNQ1VK6H/Screenshot+2020-05-04+at+11.34.18+PM.png?format=2500w',
-        full_address: '123 Market St, San Francisco, CA 94103',
-        cuisine: 'American',
-        is_veg: false,
-        rating: 4.5,
-        phone: '(415) 555-1234',
-        website: 'https://goldengategrill.com',
-        opening_hours: {
-            'mon-fri': '11:00 AM - 10:00 PM',
-            'sat-sun': '9:00 AM - 11:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 50,
-        delivery_available: true,
-        delivery_time: 35,
-        reviews: [
-            {
-                user: 'JaneD',
-                comment: 'Amazing burgers and great service!',
-                rating: 5
-            },
-            {
-                user: 'FoodieLA',
-                comment: 'Nice atmosphere but a bit pricey.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 2,
-        name: 'Sakura Sushi',
-        address: {
-            street: '456 Sunset Blvd',
-            city: 'Los Angeles',
-            state: 'CA',
-            zip: '90028'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/photosV2/3cbebaf4-6efa-4b63-81ca-91fa6db3a1a9-retina-large.png',
-        full_address: '456 Sunset Blvd, Los Angeles, CA 90028',
-        cuisine: 'Japanese',
-        is_veg: false,
-        rating: 4.7,
-        phone: '(323) 555-5678',
-        website: 'https://sakurarestaurantla.com',
-        opening_hours: {
-            'mon-thu': '12:00 PM - 9:00 PM',
-            'fri-sat': '12:00 PM - 10:30 PM',
-            sun: '12:00 PM - 8:00 PM'
-        },
-        price_range: '$$$',
-        cost_for_two: 85,
-        delivery_available: false,
-        delivery_time: null,
-        reviews: [
-            {
-                user: 'SushiLover88',
-                comment: 'Best omakase experience in LA!',
-                rating: 5
-            }
-        ]
-    },
-    {
-        id: 3,
-        name: 'Taco Fiesta',
-        address: {
-            street: '789 Elm St',
-            city: 'San Diego',
-            state: 'CA',
-            zip: '92101'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/8da2cfc1-312e-483a-bfc6-9c5d99d8e0f6.',
-        full_address: '789 Elm St, San Diego, CA 92101',
-        cuisine: 'Mexican',
-        is_veg: false,
-        rating: 4.2,
-        phone: '(619) 555-9012',
-        website: null,
-        opening_hours: {
-            everyday: '10:00 AM - 9:00 PM'
-        },
-        price_range: '$',
-        cost_for_two: 25,
-        delivery_available: true,
-        delivery_time: 20,
-        reviews: [
-            {
-                user: 'NomNomSD',
-                comment: 'Delicious and affordable street tacos!',
-                rating: 4
-            },
-            {
-                user: 'TravelEater',
-                comment: 'Great place for a quick bite!',
-                rating: 4.5
-            }
-        ]
-    },
-    {
-        id: 4,
-        name: 'Green Earth Cafe',
-        address: {
-            street: '321 Palm Dr',
-            city: 'Santa Barbara',
-            state: 'CA',
-            zip: '93101'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/6fbe74f5-4d51-4de3-92f7-cd642a095262.png',
-        full_address: '321 Palm Dr, Santa Barbara, CA 93101',
-        cuisine: 'Vegan',
-        is_veg: true,
-        rating: 4.8,
-        phone: '(805) 555-7890',
-        website: 'https://greenearthcafe.com',
-        opening_hours: {
-            'mon-sun': '8:00 AM - 8:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 40,
-        delivery_available: true,
-        delivery_time: 30,
-        reviews: [
-            {
-                user: 'HealthyLife',
-                comment: 'So fresh and flavorful! Love the smoothies!',
-                rating: 5
-            }
-        ]
-    },
-    {
-        id: 5,
-        name: 'Ocean Breeze Bistro',
-        address: {
-            street: '222 Seaside Ave',
-            city: 'Santa Monica',
-            state: 'CA',
-            zip: '90401'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/fef1bae1-e5cc-4134-8cdf-91f11239be8d.jpeg',
-        full_address: '222 Seaside Ave, Santa Monica, CA 90401',
-        cuisine: 'Seafood',
-        is_veg: false,
-        rating: 4.6,
-        phone: '(310) 555-3456',
-        website: 'https://oceanbreezebistro.com',
-        opening_hours: {
-            'mon-fri': '11:00 AM - 10:00 PM',
-            'sat-sun': '10:00 AM - 11:00 PM'
-        },
-        price_range: '$$$',
-        cost_for_two: 90,
-        delivery_available: true,
-        delivery_time: 40,
-        reviews: [
-            {
-                user: 'SeafoodFan',
-                comment: 'Fresh fish and beautiful views!',
-                rating: 5
-            },
-            {
-                user: 'DineOutLA',
-                comment: 'A bit pricey but worth it for the quality.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 6,
-        name: 'Bella Pasta',
-        address: {
-            street: '555 Olive St',
-            city: 'Los Angeles',
-            state: 'CA',
-            zip: '90015'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/f2e77648-06a7-4d60-b5cf-f5775ab1d794.jpg',
-        full_address: '555 Olive St, Los Angeles, CA 90015',
-        cuisine: 'Italian',
-        is_veg: false,
-        rating: 4.3,
-        phone: '(213) 555-7890',
-        website: 'https://bellapastala.com',
-        opening_hours: {
-            'mon-thu': '12:00 PM - 9:00 PM',
-            'fri-sun': '12:00 PM - 10:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 60,
-        delivery_available: false,
-        delivery_time: null,
-        reviews: [
-            {
-                user: 'PastaLover',
-                comment: 'Authentic flavors, great pasta dishes.',
-                rating: 5
-            },
-            {
-                user: 'CityEats',
-                comment: 'Cozy spot but often busy.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 7,
-        name: 'Spice Route',
-        address: {
-            street: '900 Curry Ln',
-            city: 'Fresno',
-            state: 'CA',
-            zip: '93721'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/1268ffc0-3cef-4b9f-b8af-dbed0a850127.png',
-        full_address: '900 Curry Ln, Fresno, CA 93721',
-        cuisine: 'Indian',
-        is_veg: true,
-        rating: 4.7,
-        phone: '(559) 555-3344',
-        website: 'https://spiceroutefresno.com',
-        opening_hours: {
-            'mon-sun': '11:00 AM - 10:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 45,
-        delivery_available: true,
-        delivery_time: 30,
-        reviews: [
-            {
-                user: 'CurryLover',
-                comment: 'Best butter chicken in town!',
-                rating: 5
-            },
-            {
-                user: 'VeggieFan',
-                comment: 'Great vegetarian options.',
-                rating: 4.5
-            }
-        ]
-    },
-    {
-        id: 8,
-        name: 'The Vegan Delight',
-        address: {
-            street: '110 Green Way',
-            city: 'Sacramento',
-            state: 'CA',
-            zip: '95814'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/photos/0798da29-a89f-42b7-a9eb-be28e7d7a459-retina-large.jpg',
-        full_address: '110 Green Way, Sacramento, CA 95814',
-        cuisine: 'Vegan',
-        is_veg: true,
-        rating: 4.9,
-        phone: '(916) 555-1212',
-        website: 'https://vegandelightsac.com',
-        opening_hours: {
-            'mon-sun': '9:00 AM - 9:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 40,
-        delivery_available: true,
-        delivery_time: 25,
-        reviews: [
-            {
-                user: 'PlantBased',
-                comment: 'Amazing vegan options, fresh ingredients!',
-                rating: 5
-            }
-        ]
-    },
-    {
-        id: 9,
-        name: 'BBQ Pit Masters',
-        address: {
-            street: '77 Smoke Rd',
-            city: 'Bakersfield',
-            state: 'CA',
-            zip: '93301'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/photosV2/963ea549-89a8-41df-ae54-763e0c722a2f-retina-large.jpg',
-        full_address: '77 Smoke Rd, Bakersfield, CA 93301',
-        cuisine: 'Barbecue',
-        is_veg: false,
-        rating: 4.4,
-        phone: '(661) 555-6767',
-        website: 'https://bbqpitmasters.com',
-        opening_hours: {
-            'tue-sun': '11:00 AM - 10:00 PM',
-            mon: 'Closed'
-        },
-        price_range: '$$',
-        cost_for_two: 55,
-        delivery_available: true,
-        delivery_time: 35,
-        reviews: [
-            {
-                user: 'MeatLover',
-                comment: 'Juicy ribs and great sauces!',
-                rating: 5
-            },
-            {
-                user: 'LocalEats',
-                comment: 'Good portions, friendly staff.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 10,
-        name: 'Mediterranean Magic',
-        address: {
-            street: '300 Olive St',
-            city: 'Long Beach',
-            state: 'CA',
-            zip: '90802'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/e2edfc03-637e-4a1c-bc31-a27db1f351f6.jpg',
-        full_address: '300 Olive St, Long Beach, CA 90802',
-        cuisine: 'Mediterranean',
-        is_veg: true,
-        rating: 4.6,
-        phone: '(562) 555-2345',
-        website: 'https://medmagiclb.com',
-        opening_hours: {
-            'mon-sat': '11:00 AM - 9:00 PM',
-            sun: '12:00 PM - 8:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 50,
-        delivery_available: true,
-        delivery_time: 30,
-        reviews: [
-            {
-                user: 'HealthyEater',
-                comment: 'Great hummus and fresh ingredients.',
-                rating: 5
-            },
-            {
-                user: 'BeachBites',
-                comment: 'Perfect spot for a light meal.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 11,
-        name: 'Burger Haven',
-        address: {
-            street: '101 Burger Blvd',
-            city: 'Oakland',
-            state: 'CA',
-            zip: '94607'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/437b77da-1a69-4082-a8e2-5eed1ace17c4.png',
-        full_address: '101 Burger Blvd, Oakland, CA 94607',
-        cuisine: 'American',
-        is_veg: false,
-        rating: 4.3,
-        phone: '(510) 555-6677',
-        website: 'https://burgerhavenoakland.com',
-        opening_hours: {
-            'mon-fri': '11:00 AM - 11:00 PM',
-            'sat-sun': '10:00 AM - 12:00 AM'
-        },
-        price_range: '$',
-        cost_for_two: 30,
-        delivery_available: true,
-        delivery_time: 25,
-        reviews: [
-            {
-                user: 'BurgerFan',
-                comment: 'Best burgers in Oakland!',
-                rating: 5
-            },
-            {
-                user: 'QuickBites',
-                comment: 'Fast service and tasty fries.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 12,
-        name: 'Pho Saigon',
-        address: {
-            street: '204 Little Saigon St',
-            city: 'Irvine',
-            state: 'CA',
-            zip: '92618'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/25286bbd-21b3-4d56-b5f6-bd0a6cb2fe7a.jpg',
-        full_address: '204 Little Saigon St, Irvine, CA 92618',
-        cuisine: 'Vietnamese',
-        is_veg: false,
-        rating: 4.5,
-        phone: '(949) 555-1234',
-        website: 'https://phosaigonirvine.com',
-        opening_hours: {
-            'mon-sun': '10:00 AM - 9:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 40,
-        delivery_available: true,
-        delivery_time: 30,
-        reviews: [
-            {
-                user: 'PhoLover',
-                comment: 'Rich broth and fresh herbs.',
-                rating: 5
-            },
-            {
-                user: 'AsianEats',
-                comment: 'Great noodle soups.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 13,
-        name: 'Crepe Corner',
-        address: {
-            street: '12 Maple St',
-            city: 'Berkeley',
-            state: 'CA',
-            zip: '94704'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/b2c29c8b-52e8-4bcb-935a-4c60a1edbc69.jpg',
-        full_address: '12 Maple St, Berkeley, CA 94704',
-        cuisine: 'French',
-        is_veg: true,
-        rating: 4.2,
-        phone: '(510) 555-4321',
-        website: 'https://crepecornerberkeley.com',
-        opening_hours: {
-            'wed-sun': '9:00 AM - 8:00 PM',
-            'mon-tue': 'Closed'
-        },
-        price_range: '$$',
-        cost_for_two: 45,
-        delivery_available: false,
-        delivery_time: null,
-        reviews: [
-            {
-                user: 'SweetTooth',
-                comment: 'Lovely crepes and cozy vibe.',
-                rating: 4
-            },
-            {
-                user: 'CafeGoer',
-                comment: 'Perfect spot for brunch.',
-                rating: 4.5
-            }
-        ]
-    },
-    {
-        id: 14,
-        name: 'Curry House',
-        address: {
-            street: '808 Spice Rd',
-            city: 'San Jose',
-            state: 'CA',
-            zip: '95112'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/c695dd37-95e7-42bd-aa9d-4fd02e7b730a.jpg',
-        full_address: '808 Spice Rd, San Jose, CA 95112',
-        cuisine: 'Indian',
-        is_veg: true,
-        rating: 4.4,
-        phone: '(408) 555-6789',
-        website: 'https://curryhouse.com',
-        opening_hours: {
-            'mon-sun': '11:00 AM - 9:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 50,
-        delivery_available: true,
-        delivery_time: 30,
-        reviews: [
-            {
-                user: 'SpiceLover',
-                comment: 'Rich flavors and generous portions.',
-                rating: 5
-            },
-            {
-                user: 'FamilyDiner',
-                comment: 'Great for group dinners.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 15,
-        name: 'Sunset Tacos',
-        address: {
-            street: '456 Beach Blvd',
-            city: 'Huntington Beach',
-            state: 'CA',
-            zip: '92648'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/98d38efc-cc25-40ed-b369-7821e9a50633.JPG',
-        full_address: '456 Beach Blvd, Huntington Beach, CA 92648',
-        cuisine: 'Mexican',
-        is_veg: false,
-        rating: 4.3,
-        phone: '(714) 555-1212',
-        website: null,
-        opening_hours: {
-            'mon-sun': '10:00 AM - 10:00 PM'
-        },
-        price_range: '$',
-        cost_for_two: 30,
-        delivery_available: true,
-        delivery_time: 20,
-        reviews: [
-            {
-                user: 'TacoLover',
-                comment: 'Great flavors and fast service!',
-                rating: 4
-            },
-            {
-                user: 'BeachEats',
-                comment: 'Perfect for a casual meal.',
-                rating: 4.5
-            }
-        ]
-    },
-    {
-        id: 16,
-        name: 'The Breakfast Nook',
-        address: {
-            street: '78 Morning St',
-            city: 'Palm Springs',
-            state: 'CA',
-            zip: '92262'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/26afb16f-da89-4926-b3ac-1690c6299b25.jpg',
-        full_address: '78 Morning St, Palm Springs, CA 92262',
-        cuisine: 'Breakfast & Brunch',
-        is_veg: true,
-        rating: 4.7,
-        phone: '(760) 555-7890',
-        website: 'https://breakfastnookps.com',
-        opening_hours: {
-            'mon-sun': '7:00 AM - 2:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 35,
-        delivery_available: false,
-        delivery_time: null,
-        reviews: [
-            {
-                user: 'EarlyBird',
-                comment: 'Best pancakes and coffee in town!',
-                rating: 5
-            }
-        ]
-    },
-    {
-        id: 17,
-        name: 'Dragon Express',
-        address: {
-            street: '101 Chinatown St',
-            city: 'San Francisco',
-            state: 'CA',
-            zip: '94108'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/82c72b7f-3a96-4688-a4b7-d23c227c0cb5.JPG',
-        full_address: '101 Chinatown St, San Francisco, CA 94108',
-        cuisine: 'Chinese',
-        is_veg: false,
-        rating: 4.1,
-        phone: '(415) 555-1111',
-        website: 'https://dragonexpresssf.com',
-        opening_hours: {
-            'mon-sun': '10:00 AM - 9:00 PM'
-        },
-        price_range: '$',
-        cost_for_two: 30,
-        delivery_available: true,
-        delivery_time: 25,
-        reviews: [
-            {
-                user: 'DimSumFan',
-                comment: 'Quick delivery and tasty dumplings.',
-                rating: 4
-            },
-            {
-                user: 'FoodCritic',
-                comment: 'Good for casual meals.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 18,
-        name: 'Bella Roma Pizzeria',
-        address: {
-            street: '500 Vine St',
-            city: 'Fresno',
-            state: 'CA',
-            zip: '93721'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/photosV2/49c3d870-6482-40db-97bd-287b8a5b91b8-retina-large.jpg',
-        full_address: '500 Vine St, Fresno, CA 93721',
-        cuisine: 'Italian',
-        is_veg: false,
-        rating: 4.5,
-        phone: '(559) 555-2233',
-        website: 'https://bellaromapizzeria.com',
-        opening_hours: {
-            'mon-thu': '11:00 AM - 10:00 PM',
-            'fri-sat': '11:00 AM - 11:00 PM',
-            sun: '12:00 PM - 9:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 55,
-        delivery_available: true,
-        delivery_time: 30,
-        reviews: [
-            {
-                user: 'PizzaFan',
-                comment: 'Authentic Italian pizza and great crust.',
-                rating: 5
-            },
-            {
-                user: 'FamilyEats',
-                comment: 'Friendly service and good portion sizes.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 19,
-        name: 'Cafe Mocha',
-        address: {
-            street: '88 Coffee Lane',
-            city: 'Santa Cruz',
-            state: 'CA',
-            zip: '95060'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/74dc5dd6-e072-423f-9729-e6a559301372.jpg',
-        full_address: '88 Coffee Lane, Santa Cruz, CA 95060',
-        cuisine: 'Cafe',
-        is_veg: true,
-        rating: 4.4,
-        phone: '(831) 555-4455',
-        website: 'https://cafemochasc.com',
-        opening_hours: {
-            'mon-sun': '7:00 AM - 7:00 PM'
-        },
-        price_range: '$',
-        cost_for_two: 20,
-        delivery_available: false,
-        delivery_time: null,
-        reviews: [
-            {
-                user: 'CoffeeAddict',
-                comment: 'Best lattes and pastries.',
-                rating: 5
-            },
-            {
-                user: 'ChillSpot',
-                comment: 'Cozy atmosphere for work and hangouts.',
-                rating: 4
-            }
-        ]
-    },
-    {
-        id: 20,
-        name: 'Urban Vegan',
-        address: {
-            street: '210 Main St',
-            city: 'San Diego',
-            state: 'CA',
-            zip: '92101'
-        },
-        img_url: 'https://img.cdn4dd.com/p/fit=cover,width=600,height=600,format=auto,quality=50/media/store/header/2be570a9-24b6-44ae-b5f9-cbb70cac666e.jpg',
-        full_address: '210 Main St, San Diego, CA 92101',
-        cuisine: 'Vegan',
-        is_veg: true,
-        rating: 4.8,
-        phone: '(619) 555-7788',
-        website: 'https://urbanvegan.com',
-        opening_hours: {
-            'mon-sun': '8:00 AM - 9:00 PM'
-        },
-        price_range: '$$',
-        cost_for_two: 45,
-        delivery_available: true,
-        delivery_time: 25,
-        reviews: [
-            {
-                user: 'HealthyEats',
-                comment: 'Delicious and healthy vegan meals.',
-                rating: 5
-            }
-        ]
-    }
-];
-const Body = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "body",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "search",
-                children: "Search"
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 795,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "res-container",
-                children: resList.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCard, {
-                        resData: restaurant
-                    }, restaurant.id, false, {
-                        fileName: "src/App.js",
-                        lineNumber: 798,
-                        columnNumber: 11
-                    }, undefined))
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 796,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/App.js",
-        lineNumber: 794,
-        columnNumber: 5
-    }, undefined);
-};
-_c2 = Body;
-const Footer = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "footer"
-    }, void 0, false, {
-        fileName: "src/App.js",
-        lineNumber: 806,
-        columnNumber: 10
-    }, undefined);
-};
-_c3 = Footer;
+var _header = require("./components/Header");
+var _headerDefault = parcelHelpers.interopDefault(_header);
+var _body = require("./components/Body");
+var _bodyDefault = parcelHelpers.interopDefault(_body);
+var _footer = require("./components/Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
 const AppLayout = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "app",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 812,
+                lineNumber: 10,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 813,
+                lineNumber: 11,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Footer, {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 814,
+                lineNumber: 12,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/App.js",
-        lineNumber: 811,
+        lineNumber: 9,
         columnNumber: 5
     }, undefined);
 };
-_c4 = AppLayout;
+_c = AppLayout;
 const root = (0, _clientDefault.default).createRoot(document.getElementById('root'));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "src/App.js",
-    lineNumber: 820,
+    lineNumber: 18,
     columnNumber: 13
 }, undefined));
-var _c, _c1, _c2, _c3, _c4;
-$RefreshReg$(_c, "Header");
-$RefreshReg$(_c1, "RestaurantCard");
-$RefreshReg$(_c2, "Body");
-$RefreshReg$(_c3, "Footer");
-$RefreshReg$(_c4, "AppLayout");
+var _c;
+$RefreshReg$(_c, "AppLayout");
 
   $parcel$ReactRefreshHelpers$4089.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-dom/client":"hrvwu","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-dom/client":"hrvwu","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./components/Header":"3PJ6N","./components/Body":"loQlg","./components/Footer":"lq1kZ"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -20630,6 +19736,414 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["frqA7","hh6uc"], "hh6uc", "parcelRequire164e", {}, null, null, "http://localhost:1234")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"3PJ6N":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$d118 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$d118.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d118.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _constants = require("../utils/constants");
+const Header = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "header",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "logo-container",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    className: "logo",
+                    src: (0, _constants.LOGO_URL)
+                }, void 0, false, {
+                    fileName: "src/components/Header.js",
+                    lineNumber: 7,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Header.js",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "nav-items",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "Home"
+                        }, void 0, false, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 11,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "About Us"
+                        }, void 0, false, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 12,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "Contact Us"
+                        }, void 0, false, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 13,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            className: "cart-logo",
+                            src: "https://cdn-icons-png.flaticon.com/512/1413/1413908.png"
+                        }, void 0, false, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 15,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Header.js",
+                    lineNumber: 10,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Header.js",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Header.js",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = Header;
+exports.default = Header;
+var _c;
+$RefreshReg$(_c, "Header");
+
+  $parcel$ReactRefreshHelpers$d118.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../utils/constants":"dIVBf"}],"dIVBf":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CDN_URL", ()=>CDN_URL);
+parcelHelpers.export(exports, "LOGO_URL", ()=>LOGO_URL);
+const CDN_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
+const LOGO_URL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzTo7Sb8iYLjFeTf-I8Rnz7qnVpPzr6EvSUQ&s';
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"loQlg":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$8a58 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$8a58.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8a58.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _restaurantCard = require("./RestaurantCard");
+var _restaurantCardDefault = parcelHelpers.interopDefault(_restaurantCard);
+var _react = require("react");
+var _shimmer = require("./Shimmer");
+var _shimmerDefault = parcelHelpers.interopDefault(_shimmer);
+var _s = $RefreshSig$();
+const Body = ()=>{
+    _s();
+    // Local State Variable - Super powerful variable
+    const [listOfRestaurants, setListOfRestaurants] = (0, _react.useState)([]);
+    const [searchInput, setSearchInput] = (0, _react.useState)('');
+    (0, _react.useEffect)(()=>{
+        fetchData();
+    }, []);
+    const fetchData = async ()=>{
+        const data = await fetch('https://pastebin.com/raw/0QcdEDBL');
+        const json = await data.json();
+        // optional chaining
+        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    };
+    const handleSearch = (event)=>{
+        setSearchInput(event.target.value);
+        const filteredOutput = listOfRestaurants.filter((res)=>res.name == event.target.value);
+        setListOfRestaurants(filteredOutput);
+    };
+    // conditional rendering
+    return listOfRestaurants.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
+        fileName: "src/components/Body.js",
+        lineNumber: 36,
+        columnNumber: 5
+    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "body",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "filter",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    className: "filter-btn",
+                    onClick: ()=>{
+                        // Filter logic here
+                        const filteredList = listOfRestaurants.filter((res)=>res.rating > 4);
+                        setListOfRestaurants(filteredList);
+                    },
+                    children: "Top Rated Restaurants"
+                }, void 0, false, {
+                    fileName: "src/components/Body.js",
+                    lineNumber: 40,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Body.js",
+                lineNumber: 39,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "text",
+                    placeholder: "Search",
+                    value: searchInput,
+                    onChange: handleSearch
+                }, void 0, false, {
+                    fileName: "src/components/Body.js",
+                    lineNumber: 54,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Body.js",
+                lineNumber: 53,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "res-container",
+                children: listOfRestaurants.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restaurantCardDefault.default), {
+                        resData: restaurant
+                    }, restaurant.info.id, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 64,
+                        columnNumber: 11
+                    }, undefined))
+            }, void 0, false, {
+                fileName: "src/components/Body.js",
+                lineNumber: 62,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Body.js",
+        lineNumber: 38,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Body, "x67bGANoSYOTRm9IoGwAVV2CP5c=");
+_c = Body;
+exports.default = Body;
+var _c;
+$RefreshReg$(_c, "Body");
+
+  $parcel$ReactRefreshHelpers$8a58.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./RestaurantCard":"lCpT9","react":"jMk1U","./Shimmer":"fSZbx"}],"lCpT9":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$7721 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$7721.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$7721.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _constants = require("../utils/constants");
+const RestaurantCard = (props)=>{
+    const { resData } = props;
+    const { info } = resData;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "res-card",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                className: "res-img",
+                src: (0, _constants.CDN_URL) + info?.cloudinaryImageId,
+                alt: "res-img"
+            }, void 0, false, {
+                fileName: "src/components/RestaurantCard.js",
+                lineNumber: 10,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                children: info?.name
+            }, void 0, false, {
+                fileName: "src/components/RestaurantCard.js",
+                lineNumber: 15,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                children: info?.cuisines
+            }, void 0, false, {
+                fileName: "src/components/RestaurantCard.js",
+                lineNumber: 16,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                children: [
+                    info?.avgRating,
+                    " stars"
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RestaurantCard.js",
+                lineNumber: 17,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                children: [
+                    info?.sla?.deliveryTime,
+                    " mins"
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RestaurantCard.js",
+                lineNumber: 18,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/RestaurantCard.js",
+        lineNumber: 9,
+        columnNumber: 5
+    }, undefined);
+};
+_c = RestaurantCard;
+exports.default = RestaurantCard;
+var _c;
+$RefreshReg$(_c, "RestaurantCard");
+
+  $parcel$ReactRefreshHelpers$7721.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../utils/constants":"dIVBf"}],"fSZbx":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$9ecf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$9ecf.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9ecf.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const Shimmer = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "shimmer-container",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 4,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 5,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 10,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "shimmer-cards"
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 11,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Shimmer.js",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = Shimmer;
+exports.default = Shimmer;
+var _c;
+$RefreshReg$(_c, "Shimmer");
+
+  $parcel$ReactRefreshHelpers$9ecf.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lq1kZ":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$a646 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$a646.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a646.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const Footer = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "footer"
+    }, void 0, false, {
+        fileName: "src/components/Footer.js",
+        lineNumber: 2,
+        columnNumber: 10
+    }, undefined);
+};
+_c = Footer;
+exports.default = Footer;
+var _c;
+$RefreshReg$(_c, "Footer");
+
+  $parcel$ReactRefreshHelpers$a646.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["frqA7","hh6uc"], "hh6uc", "parcelRequire164e", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=namaste-react.2c54e4d8.js.map
