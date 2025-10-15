@@ -4,8 +4,17 @@
   display: flex;
 }
 
+.logo-container {
+  display: flex;
+}
+
 .logo {
   width: 100px;
+}
+
+.company-name {
+  color: #009687;
+  margin-top: 35px;
 }
 
 .nav-items {
@@ -62,6 +71,10 @@
   height: 200px;
 }
 
+.filter {
+  display: flex;
+}
+
 .filter-btn {
   cursor: pointer;
   margin: 10px 10px 10px 30px;
@@ -78,5 +91,12 @@
   height: 300px;
   margin: 30px;
   padding: 5px;
+}
+
+.login-btn {
+  cursor: pointer;
+  margin: 0 20px;
+  padding: 0 20px;
+  font-size: 20px;
 }
 /*# sourceMappingURL=namaste-react.9e4c6fd2.css.map */
