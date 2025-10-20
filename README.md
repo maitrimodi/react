@@ -57,3 +57,8 @@ Two types of Export/Import
 
 - useState()
 - useEffect()
+
+# 2 types of Routing in web apps
+
+- Client side routing
+- Server side routing(when you make a network call and aboutUs.html page is coming from server )
