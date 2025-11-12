@@ -35,11 +35,14 @@
   },
   "dependencies": {
     "@parcel/reporter-dev-server": "^2.16.0",
+    "@tailwindcss/postcss": "^4.1.16",
+    "formik": "^2.4.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
     "react-router": "^6.30.1",
-    "react-router-dom": "^6.30.1"
+    "react-router-dom": "^6.30.1",
+    "tailwindcss": "^4.1.16"
   },
   "browsersList": [
     "last 2 versions"
