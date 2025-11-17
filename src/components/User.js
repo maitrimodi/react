@@ -9,7 +9,7 @@ const User = (props) => {
     // it gets called after render method
     getUserInfo();
     setInterval(() => {
-      console.log('Interval Tick from Functional Component');
+      // console.log('Interval Tick from Functional Component');
     }, 1000);
 
     return () => {

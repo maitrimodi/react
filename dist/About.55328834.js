@@ -730,6 +730,8 @@ var _userClass = require("./UserClass");
 var _userClassDefault = parcelHelpers.interopDefault(_userClass);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _userContext = require("../utils/UserContext");
+var _userContextDefault = parcelHelpers.interopDefault(_userContext);
 class About extends (0, _reactDefault.default).Component {
     constructor(props){
         super(props);
@@ -741,14 +743,37 @@ class About extends (0, _reactDefault.default).Component {
                     children: "About Us"
                 }, void 0, false, {
                     fileName: "src/components/About.js",
-                    lineNumber: 13,
+                    lineNumber: 14,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: [
+                        "LoggedIn User",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userContextDefault.default).Consumer, {
+                            children: ({ loggedInUser })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                                    className: "font-bold",
+                                    children: loggedInUser
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 19,
+                                    columnNumber: 15
+                                }, this)
+                        }, void 0, false, {
+                            fileName: "src/components/About.js",
+                            lineNumber: 17,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/About.js",
+                    lineNumber: 15,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "This is the about page of our application."
                 }, void 0, false, {
                     fileName: "src/components/About.js",
-                    lineNumber: 14,
+                    lineNumber: 23,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userDefault.default), {
@@ -756,7 +781,7 @@ class About extends (0, _reactDefault.default).Component {
                     age: '29'
                 }, void 0, false, {
                     fileName: "src/components/About.js",
-                    lineNumber: 15,
+                    lineNumber: 24,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userClassDefault.default), {
@@ -764,13 +789,13 @@ class About extends (0, _reactDefault.default).Component {
                     location: "Ahmedabad Class"
                 }, void 0, false, {
                     fileName: "src/components/About.js",
-                    lineNumber: 16,
+                    lineNumber: 25,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/About.js",
-            lineNumber: 12,
+            lineNumber: 13,
             columnNumber: 7
         }, this);
     }
@@ -798,7 +823,7 @@ class About extends (0, _reactDefault.default).Component {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","./User":"gT672","./UserClass":"dHre4","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"gT672":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","./User":"gT672","./UserClass":"dHre4","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../utils/UserContext":"8LxkN"}],"gT672":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$1070 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$1070.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -820,7 +845,7 @@ const User = (props)=>{
         // it gets called after render method
         getUserInfo();
         setInterval(()=>{
-            console.log('Interval Tick from Functional Component');
+        // console.log('Interval Tick from Functional Component');
         }, 1000);
         return ()=>{
             clearInterval();
@@ -937,7 +962,7 @@ class UserClass extends (0, _reactDefault.default).Component {
             userInfo: json
         });
         this.timer = setInterval(()=>{
-            console.log('Interval Tick');
+        // console.log('Interval Tick');
         }, 1000);
     }
     componentDidUpdate(prevProps, prevState) {

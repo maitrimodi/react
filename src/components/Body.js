@@ -1,9 +1,10 @@
 import RestaurantCard from './RestaurantCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import { RES_LIST_API } from '../utils/constants';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
   // Local State Variable - Super powerful variable
@@ -15,6 +16,8 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   const fetchData = async () => {
     const data = await fetch(RES_LIST_API);
@@ -87,7 +90,16 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <div className="m-4 p-4 flex items-center">
+          <label className="mr-3">UserName : </label>
+          <input
+            className="border border-black px-1"
+            onChange={(e) => setUserName(e.target.value)}
+            value={loggedInUser}
+          />
+        </div>
       </div>
+      <div></div>
       <div className="flex flex-wrap m-10">
         {listOfRestaurants.map((restaurant) => (
           <Link

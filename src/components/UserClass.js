@@ -21,7 +21,7 @@ class UserClass extends React.Component {
     });
 
     this.timer = setInterval(() => {
-      console.log('Interval Tick');
+      // console.log('Interval Tick');
     }, 1000);
   }
 

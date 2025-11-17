@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../utils/constants';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import Grocery from './Grocery';
+import UserContext from '../utils/UserContext';
 
 const Header = () => {
   const [btnName, setBtnName] = useState('Login');
@@ -13,8 +14,11 @@ const Header = () => {
   // if dependency array has variables, useEffect will be called only when those variables change + initial render
 
   useEffect(() => {
-    console.log('useEffect called');
+    // console.log('useEffect called');
   }, [btnName]);
+
+  const data = useContext(UserContext);
+  // console.log('Context', data);
 
   return (
     <div className="flex justify-between shadow-lg sticky top-0 z-50 h-50 bg-linear-to-bl from-teak-500 to-teal-300">
@@ -64,6 +68,7 @@ const Header = () => {
               {btnName}
             </button>
           </Link>
+          <li className="font-bold mt-1">{data.loggedInUser}</li>
         </ul>
       </div>
     </div>
