@@ -4,6 +4,7 @@ import { LOGO_URL } from '../utils/constants';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import Grocery from './Grocery';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [btnName, setBtnName] = useState('Login');
@@ -13,12 +14,10 @@ const Header = () => {
   // if dependency array is empty, useEffect will be called only once after initial render
   // if dependency array has variables, useEffect will be called only when those variables change + initial render
 
-  useEffect(() => {
-    // console.log('useEffect called');
-  }, [btnName]);
-
   const data = useContext(UserContext);
-  // console.log('Context', data);
+
+  // Subscribing to the store using Selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between shadow-lg sticky top-0 z-50 h-50 bg-linear-to-bl from-teak-500 to-teal-300">
@@ -55,10 +54,21 @@ const Header = () => {
               Grocery{' '}
             </Link>
           </li>
-          <img
-            className="w-8 h-8 ml-4"
-            src="https://cdn-icons-png.flaticon.com/512/1413/1413908.png"
-          />
+          <Link to="/cart">
+            <div className="flex cursor-pointer">
+              <img
+                className="w-8 h-8 ml-4"
+                src="https://cdn-icons-png.flaticon.com/512/1413/1413908.png"
+              />
+              {cartItems.length === 0 ? (
+                <></>
+              ) : (
+                <div className="h-6 w-6 bg-amber-200 rounded-4xl text-center absolute top-12 right-57 shadow-2xl hover:bg-amber-400">
+                  <div className="mb-1">{cartItems.length}</div>
+                </div>
+              )}
+            </div>
+          </Link>
           <Link to={btnName === 'Login' ? '/login' : '/'}>
             <button
               onClick={() =>
@@ -68,6 +78,7 @@ const Header = () => {
               {btnName}
             </button>
           </Link>
+
           <li className="font-bold mt-1">{data.loggedInUser}</li>
         </ul>
       </div>

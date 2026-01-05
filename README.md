@@ -62,3 +62,26 @@ Two types of Export/Import
 
 - Client side routing
 - Server side routing(when you make a network call and aboutUs.html page is coming from server )
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit & react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch(action)
+- Selector
+
+# Types of testing (developer)
+
+- Unit Testing (testing a single unit of the code e.g. Header)
+- Integration Testing (testing the integration of the component e.g. search)
+- End to End Testing - e2e testing (user) (Selenium, cypress, Puppeteer)
+
+# Setting up testing in our app
+
+- install React Testing Library
+- install jest
+- install babel dependencies
+- configure babel(babel.config.js)
+- configure parcel config file to disable default babel transpilation(.parcelrc)

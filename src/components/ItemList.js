@@ -1,7 +1,16 @@
+import { useState } from 'react';
 import { CDN_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
 const ItemList = ({ items, dummy }) => {
-  console.log('items data', items, dummy);
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // dispatch an action
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -31,13 +40,11 @@ const ItemList = ({ items, dummy }) => {
               </span>
             </div>
             <div>
-              {item.card.info.ratings?.aggregatedRating?.rating ? (
+              {item.card.info.ratings?.aggregatedRating?.rating && (
                 <div>
                   ★ {item.card.info.ratings?.aggregatedRating?.rating}(
                   {item.card.info.ratings?.aggregatedRating?.ratingCount})
                 </div>
-              ) : (
-                <></>
               )}
             </div>
             <div className="text-xl">{item.card.info.description}</div>
@@ -47,7 +54,10 @@ const ItemList = ({ items, dummy }) => {
               className="h-30 w-35 rounded-lg block"
               src={CDN_URL + item.card.info.imageId}
             />
-            <button className="p-2 px-8 border rounded-lg font-bold text-green-600 shadow-lg my-2">
+            <button
+              className="p-2 px-8 border rounded-lg font-bold text-green-600 shadow-lg my-2"
+              onClick={() => handleAddItem(item)}
+            >
               ADD
             </button>
           </div>
@@ -56,5 +66,9 @@ const ItemList = ({ items, dummy }) => {
     </div>
   );
 };
+
+// onClick={handleAddItem}
+// onClick = {() => handleAddItem(item)}
+// onClick = {handleAddItem(item)}
 
 export default ItemList;

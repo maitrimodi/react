@@ -20,7 +20,6 @@ const User = (props) => {
   async function getUserInfo() {
     const data = await fetch('https://api.github.com/users/maitrimodi');
     const json = await data.json();
-    console.log(json);
     setLocation(json.location);
   }
 

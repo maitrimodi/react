@@ -55,14 +55,14 @@ const Body = () => {
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-            onKeyDown={() => {
-              // Filter the restaurants cards and update the UI
-              setListOfRestaurants(
-                filteredRestaurant.filter((res) =>
-                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                )
-              );
-            }}
+            // onKeyDown={() => {
+            //   // Filter the restaurants cards and update the UI
+            //   setListOfRestaurants(
+            //     filteredRestaurant.filter((res) =>
+            //       res.info.name.toLowerCase().includes(searchText.toLowerCase())
+            //     )
+            //   );
+            // }}
           />
           <button
             className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-0.5 px-4 rounded"

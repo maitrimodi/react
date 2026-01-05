@@ -823,7 +823,7 @@ class About extends (0, _reactDefault.default).Component {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","./User":"gT672","./UserClass":"dHre4","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../utils/UserContext":"8LxkN"}],"gT672":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","./User":"gT672","./UserClass":"dHre4","react":"jMk1U","../utils/UserContext":"8LxkN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"gT672":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$1070 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$1070.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -854,7 +854,6 @@ const User = (props)=>{
     async function getUserInfo() {
         const data = await fetch('https://api.github.com/users/maitrimodi');
         const json = await data.json();
-        console.log(json);
         setLocation(json.location);
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -864,7 +863,7 @@ const User = (props)=>{
                 children: "User Information"
             }, void 0, false, {
                 fileName: "src/components/User.js",
-                lineNumber: 29,
+                lineNumber: 28,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -874,7 +873,7 @@ const User = (props)=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/User.js",
-                lineNumber: 30,
+                lineNumber: 29,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -884,7 +883,7 @@ const User = (props)=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/User.js",
-                lineNumber: 31,
+                lineNumber: 30,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
@@ -894,14 +893,14 @@ const User = (props)=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/User.js",
-                lineNumber: 32,
+                lineNumber: 31,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
                 children: "Contact: @maitri__modi"
             }, void 0, false, {
                 fileName: "src/components/User.js",
-                lineNumber: 33,
+                lineNumber: 32,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -911,13 +910,13 @@ const User = (props)=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/User.js",
-                lineNumber: 34,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/User.js",
-        lineNumber: 28,
+        lineNumber: 27,
         columnNumber: 5
     }, undefined);
 };
