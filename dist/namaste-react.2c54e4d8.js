@@ -1948,7 +1948,7 @@ module.exports = require("a569817e6ea559f6");
 
 },{}],"61z4w":[function(require,module,exports,__globalThis) {
 /**
- * React Router DOM v6.30.2
+ * React Router DOM v6.30.3
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -3593,7 +3593,7 @@ module.exports = require("b0f0e6b9e8349dac");
 
 },{"6f0162e9ab224cd4":"jMk1U"}],"4ChVy":[function(require,module,exports,__globalThis) {
 /**
- * React Router v6.30.2
+ * React Router v6.30.3
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -4896,7 +4896,7 @@ function createMemoryRouter(routes, opts) {
 
 },{"react":"jMk1U","@remix-run/router":"2GHDR","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2GHDR":[function(require,module,exports,__globalThis) {
 /**
- * @remix-run/router v1.23.1
+ * @remix-run/router v1.23.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -6832,7 +6832,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
                 // If the user didn't explicity indicate replace behavior, replace if
                 // we redirected to the exact same location we're currently at to avoid
                 // double back-buttons
-                let location = normalizeRedirectLocation(result.response.headers.get("Location"), new URL(request.url), basename);
+                let location = normalizeRedirectLocation(result.response.headers.get("Location"), new URL(request.url), basename, init.history);
                 replace = location === state.location.pathname + state.location.search;
             }
             await startRedirectNavigation(request, result, true, {
@@ -7369,7 +7369,7 @@ const TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
         if (redirect.response.headers.has("X-Remix-Revalidate")) isRevalidationRequired = true;
         let location = redirect.response.headers.get("Location");
         invariant(location, "Expected a Location header on the redirect Response");
-        location = normalizeRedirectLocation(location, new URL(request.url), basename);
+        location = normalizeRedirectLocation(location, new URL(request.url), basename, init.history);
         let redirectLocation = createLocation(state.location, location, {
             _isRedirect: true
         });
@@ -8873,14 +8873,34 @@ function normalizeRelativeRoutingRedirectResponse(response, request, routeId, ma
     }
     return response;
 }
-function normalizeRedirectLocation(location, currentUrl, basename) {
+function normalizeRedirectLocation(location, currentUrl, basename, historyInstance) {
+    // Match Chrome's behavior:
+    // https://github.com/chromium/chromium/blob/216dbeb61db0c667e62082e5f5400a32d6983df3/content/public/common/url_utils.cc#L82
+    let invalidProtocols = [
+        "about:",
+        "blob:",
+        "chrome:",
+        "chrome-untrusted:",
+        "content:",
+        "data:",
+        "devtools:",
+        "file:",
+        "filesystem:",
+        // eslint-disable-next-line no-script-url
+        "javascript:"
+    ];
     if (ABSOLUTE_URL_REGEX.test(location)) {
         // Strip off the protocol+origin for same-origin + same-basename absolute redirects
         let normalizedLocation = location;
         let url = normalizedLocation.startsWith("//") ? new URL(currentUrl.protocol + normalizedLocation) : new URL(normalizedLocation);
+        if (invalidProtocols.includes(url.protocol)) throw new Error("Invalid redirect location");
         let isSameBasename = stripBasename(url.pathname, basename) != null;
         if (url.origin === currentUrl.origin && isSameBasename) return url.pathname + url.search + url.hash;
     }
+    try {
+        let url = historyInstance.createURL(location);
+        if (invalidProtocols.includes(url.protocol)) throw new Error("Invalid redirect location");
+    } catch (e) {}
     return location;
 }
 // Utility method for creating the Request instances for loaders/actions during
@@ -28537,13 +28557,13 @@ const Body = ()=>{
         children: "\uD83D\uDD34 Looks like you are offline! Please check your internet connection."
     }, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 37,
+        lineNumber: 39,
         columnNumber: 7
     }, undefined);
     // conditional rendering
     return listOfRestaurants.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 46,
+        lineNumber: 48,
         columnNumber: 5
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "body",
@@ -28556,6 +28576,7 @@ const Body = ()=>{
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
+                                "data-testid": "searchInput",
                                 className: "search-box shadow-lg border-solid border-2 border-gray-300 rounded-md mr-4",
                                 value: searchText,
                                 onChange: (e)=>{
@@ -28563,7 +28584,7 @@ const Body = ()=>{
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 51,
+                                lineNumber: 53,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28575,26 +28596,26 @@ const Body = ()=>{
                                 children: "Search"
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 67,
+                                lineNumber: 70,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 50,
+                        lineNumber: 52,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         className: "bg-teal-500 hover:bg-teal-700 text-white font-bold px-4 rounded h-7 mt-8",
                         onClick: ()=>{
                             // Filter logic here
-                            const filteredList = listOfRestaurants.filter((res)=>res.rating > 4);
+                            const filteredList = listOfRestaurants.filter((res)=>res.info.avgRating > 4.2);
                             setListOfRestaurants(filteredList);
                         },
                         children: "Top Rated Restaurants"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 81,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28605,7 +28626,7 @@ const Body = ()=>{
                                 children: "UserName : "
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 94,
+                                lineNumber: 97,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28614,24 +28635,24 @@ const Body = ()=>{
                                 value: loggedInUser
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 95,
+                                lineNumber: 98,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 93,
+                        lineNumber: 96,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 49,
+                lineNumber: 51,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {}, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 102,
+                lineNumber: 105,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28645,23 +28666,23 @@ const Body = ()=>{
                             resData: restaurant
                         }, void 0, false, {
                             fileName: "src/components/Body.js",
-                            lineNumber: 110,
+                            lineNumber: 113,
                             columnNumber: 13
                         }, undefined)
                     }, restaurant.info.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 105,
+                        lineNumber: 108,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 103,
+                lineNumber: 106,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 48,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined);
 };
@@ -28696,6 +28717,7 @@ const RestaurantCard = (props)=>{
     const { resData } = props;
     const { info } = resData;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        "data-testid": "resCard",
         className: "m-7 p-4 w-[250px] bg-gray-100 rounded-lg h-95 hover:shadow-lg transition-transform duration-200 ease-in-out transform hover:scale-105 flex flex-col hover:bg-gray-200",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -28704,7 +28726,7 @@ const RestaurantCard = (props)=>{
                 alt: "res-img"
             }, void 0, false, {
                 fileName: "src/components/RestaurantCard.js",
-                lineNumber: 10,
+                lineNumber: 12,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -28712,14 +28734,14 @@ const RestaurantCard = (props)=>{
                 children: info?.name
             }, void 0, false, {
                 fileName: "src/components/RestaurantCard.js",
-                lineNumber: 15,
+                lineNumber: 17,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: info?.cuisines
             }, void 0, false, {
                 fileName: "src/components/RestaurantCard.js",
-                lineNumber: 16,
+                lineNumber: 18,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
@@ -28730,7 +28752,7 @@ const RestaurantCard = (props)=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/RestaurantCard.js",
-                lineNumber: 17,
+                lineNumber: 19,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
@@ -28740,13 +28762,13 @@ const RestaurantCard = (props)=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/RestaurantCard.js",
-                lineNumber: 18,
+                lineNumber: 20,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/RestaurantCard.js",
-        lineNumber: 9,
+        lineNumber: 8,
         columnNumber: 5
     }, undefined);
 };
@@ -28891,8 +28913,10 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 const Contact = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "p-10",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "font-bold text-3xl p-4 m-4 align-middle justify-center text-center",
                 children: "Contact Us"
             }, void 0, false, {
                 fileName: "src/components/Contact.js",
@@ -28903,7 +28927,7 @@ const Contact = ()=>{
                 children: "If you have any questions, feel free to reach out to us!"
             }, void 0, false, {
                 fileName: "src/components/Contact.js",
-                lineNumber: 5,
+                lineNumber: 7,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28913,21 +28937,23 @@ const Contact = ()=>{
                             "Name:",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
-                                name: "name"
+                                name: "name",
+                                placeholder: "name",
+                                className: "border border-black p-2 m-2"
                             }, void 0, false, {
                                 fileName: "src/components/Contact.js",
-                                lineNumber: 9,
+                                lineNumber: 11,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 7,
+                        lineNumber: 9,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 11,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28935,56 +28961,61 @@ const Contact = ()=>{
                             "Email:",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "email",
-                                name: "email"
+                                name: "email",
+                                placeholder: "email",
+                                className: "border border-black p-2 m-2"
                             }, void 0, false, {
                                 fileName: "src/components/Contact.js",
-                                lineNumber: 14,
+                                lineNumber: 21,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 12,
+                        lineNumber: 19,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 16,
+                        lineNumber: 28,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                         children: [
                             "Message:",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
-                                name: "message"
+                                name: "message",
+                                placeholder: "Type your message here...",
+                                className: "border border-black p-2 m-2"
                             }, void 0, false, {
                                 fileName: "src/components/Contact.js",
-                                lineNumber: 19,
+                                lineNumber: 31,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 17,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 21,
+                        lineNumber: 37,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         type: "submit",
+                        className: "border border-black p-2 m-2 bg-gray-100 rounded-lg",
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/Contact.js",
-                        lineNumber: 22,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Contact.js",
-                lineNumber: 6,
+                lineNumber: 8,
                 columnNumber: 7
             }, undefined)
         ]
@@ -29093,9 +29124,9 @@ const RestaurantMenu = ()=>{
     }, undefined);
     const { name, cuisines, costForTwoMessage } = resInfo?.data?.cards[2]?.card?.card?.info;
     const { itemCards } = resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-    console.log('ESINFO', resInfo);
+    // console.log('ESINFO', resInfo);
     const categories = resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card?.card?.['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory');
-    console.log('categories', categories);
+    // console.log('categories', categories);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "text-center",
         children: [
@@ -29175,7 +29206,7 @@ const useRestaurantMenu = (resId)=>{
     const fetchData = async ()=>{
         const data = await fetch((0, _constants.MENU_API));
         const json = await data.json();
-        console.log('Menu data', json);
+        // console.log('Menu data', json);
         setResInfo(json);
     };
     return resInfo;
@@ -29295,6 +29326,7 @@ const ItemList = ({ items, dummy })=>{
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: items.map((item)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                "data-testid": "foodItems",
                 className: "flex justify-between my-15 border-b py-10",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29307,19 +29339,19 @@ const ItemList = ({ items, dummy })=>{
                                     children: "\uD83D\uDFE2"
                                 }, void 0, false, {
                                     fileName: "src/components/ItemList.js",
-                                    lineNumber: 24,
+                                    lineNumber: 25,
                                     columnNumber: 17
                                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     className: "p-0.5 border-4 border-red-400 rounded-lg",
                                     children: "\uD83D\uDD34"
                                 }, void 0, false, {
                                     fileName: "src/components/ItemList.js",
-                                    lineNumber: 28,
+                                    lineNumber: 29,
                                     columnNumber: 17
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 22,
+                                lineNumber: 23,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29327,7 +29359,7 @@ const ItemList = ({ items, dummy })=>{
                                 children: item.card.info.name
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 33,
+                                lineNumber: 34,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29340,7 +29372,7 @@ const ItemList = ({ items, dummy })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/ItemList.js",
-                                        lineNumber: 35,
+                                        lineNumber: 36,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -29351,13 +29383,13 @@ const ItemList = ({ items, dummy })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/ItemList.js",
-                                        lineNumber: 38,
+                                        lineNumber: 39,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 34,
+                                lineNumber: 35,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29371,12 +29403,12 @@ const ItemList = ({ items, dummy })=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/ItemList.js",
-                                    lineNumber: 44,
+                                    lineNumber: 45,
                                     columnNumber: 17
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 42,
+                                lineNumber: 43,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29384,13 +29416,13 @@ const ItemList = ({ items, dummy })=>{
                                 children: item.card.info.description
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 50,
+                                lineNumber: 51,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ItemList.js",
-                        lineNumber: 21,
+                        lineNumber: 22,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29401,7 +29433,7 @@ const ItemList = ({ items, dummy })=>{
                                 src: (0, _constants.CDN_URL) + item.card.info.imageId
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 53,
+                                lineNumber: 54,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -29410,13 +29442,13 @@ const ItemList = ({ items, dummy })=>{
                                 children: "ADD"
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 57,
+                                lineNumber: 58,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ItemList.js",
-                        lineNumber: 52,
+                        lineNumber: 53,
                         columnNumber: 11
                     }, undefined)
                 ]
@@ -38940,7 +38972,7 @@ const appStore = (0, _toolkit.configureStore)({
 (0, _query.setupListeners)(appStore.dispatch);
 exports.default = appStore;
 
-},{"@reduxjs/toolkit":"fKS5f","./cartSlice":"8EWXN","../services/pokemon":"5fZgd","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@reduxjs/toolkit/query":"dy0Lx"}],"5fZgd":[function(require,module,exports,__globalThis) {
+},{"@reduxjs/toolkit":"fKS5f","./cartSlice":"8EWXN","../services/pokemon":"5fZgd","@reduxjs/toolkit/query":"dy0Lx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5fZgd":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "pokemonApi", ()=>pokemonApi);

@@ -21,7 +21,9 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(RES_LIST_API);
+
     const json = await data.json();
+
     setFilteredRestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -50,6 +52,7 @@ const Body = () => {
         <div className="search m-4 p-4 flex items-center">
           <input
             type="text"
+            data-testid="searchInput"
             className="search-box shadow-lg border-solid border-2 border-gray-300 rounded-md mr-4"
             value={searchText}
             onChange={(e) => {
@@ -83,7 +86,7 @@ const Body = () => {
           onClick={() => {
             // Filter logic here
             const filteredList = listOfRestaurants.filter(
-              (res) => res.rating > 4
+              (res) => res.info.avgRating > 4.2
             );
             setListOfRestaurants(filteredList);
           }}

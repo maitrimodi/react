@@ -85,3 +85,8 @@ Two types of Export/Import
 - install babel dependencies
 - configure babel(babel.config.js)
 - configure parcel config file to disable default babel transpilation(.parcelrc)
+- Jest configuration ( npm init jest@latest )
+- Install JSDOM library
+- Install @babel/preset-react to make JSX work in test cases
+- Include @babel/preset-react inside my babel config.
+- Install @testing-library/jest-dom

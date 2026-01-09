@@ -103,6 +103,7 @@ const Cart = () => {
           </div>
           {cartItems.map((item) => (
             <div
+              data-testid="cartItems"
               key={item.card.info.id}
               className="flex ml-10 mt-10 items-center border-b border-black pb-5"
             >
